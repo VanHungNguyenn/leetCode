@@ -24,3 +24,26 @@ const twoSum2 = function (target, nums) {
 		map.set(nums[i], i)
 	}
 }
+
+const twoSum3 = function (nums, target) {
+	const visitedNums = {}
+
+	for (let i = 0; i < nums.length; i++) {
+		const neededNum = target - nums[i]
+
+		const indexOfNeededNum = visitedNums[neededNum]
+
+		console.log(`visitedNums: ${JSON.stringify(visitedNums)}`)
+		console.log(`indexOfNeededNum: ${indexOfNeededNum}`)
+
+		if (indexOfNeededNum >= 0) {
+			return [i, indexOfNeededNum]
+		}
+
+		visitedNums[nums[i]] = i
+	}
+}
+
+const nums = [2, 7, 11, 15]
+const target = 9
+console.log(twoSum3(nums, target))
